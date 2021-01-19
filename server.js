@@ -17,34 +17,12 @@ const db=knex({
 		    database : 'smartsense'
 		}
 	});
-db.select('*').from('users').then(data=>{
-	console.log(data);
-});
 
 const app=express();
 app.use(express.json());
-app.use(cors())
- 
-/*const database={
-	users:[
-		{	id:'123',
-			name:'john',
-			email:'john@gmail.com',
-			password:'cookies',
-			entries:0,
-			joined:new Date()
-			},
-			{id:'124',
-			name:'salley',
-			email:'salley@gmail.com',
-			password:'hobby',
-			entries:0,
-			joined:new Date()
-		}
-	]
-}*/
+app.use(cors());
 
-app.get('/', (req,res)=>{res.send("its working")})
+app.get('/', (req,res)=>{res.send("its working")});
 
 app.post('/signin',(req,res)=>{ signIn.signInHandler(req,res,db,bcrypt)});
 		
