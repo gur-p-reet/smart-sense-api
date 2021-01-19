@@ -25,7 +25,7 @@ const app=express();
 app.use(express.json());
 app.use(cors())
  
-const database={
+/*const database={
 	users:[
 		{	id:'123',
 			name:'john',
@@ -42,12 +42,9 @@ const database={
 			joined:new Date()
 		}
 	]
-}
+}*/
 
-app.get('/', (req,res)=>{
-	res.send(database.users);
-
-})
+app.get('/', (req,res)=>{res.send("its working")})
 
 app.post('/signin',(req,res)=>{ signIn.signInHandler(req,res,db,bcrypt)});
 		
@@ -59,6 +56,6 @@ app.put('/image', (req,res)=>{image.imageHandler(req,res,db)});
 app.post('/imageUrl', (req,res)=>{image.apiCallHandler(req,res)});
 
 
-app.listen(3000, ()=>{
-	console.log('app running on port 3000')
+app.listen(process.env.PORT || 3000, ()=>{
+	console.log('app running on port ${process.env.PORT}')
 })
